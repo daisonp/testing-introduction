@@ -20,7 +20,7 @@ public class LengthGreaterThan extends BaseMatcher<String> {
     return new LengthGreaterThan(minLength);
   }
 
-  @Override
+//  @Override
   public void describeTo(Description description) {
     description.appendText("length of at least ").appendValue(minLength);
   }
@@ -35,7 +35,7 @@ public class LengthGreaterThan extends BaseMatcher<String> {
     }
   }
 
-  @Override
+//  @Override
   public boolean matches(Object item) {
     return item != null && item instanceof String && item.toString().length() >= minLength;
   }

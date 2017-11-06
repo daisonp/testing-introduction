@@ -2,33 +2,35 @@ package org.daisonp.testingexamples;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+@RunWith(Parameterized.class)
 public class FizzBuzzTest {
+
+	@Parameters(name = "Input = {0}, Expect={1}")
+	public static Collection<Object[]> data() {
+		return Arrays.asList(new Object[][] { { 1, "1" }, { 3, "Fizz" }, { 5, "Buzz" }, { 15, "FizzBuzz" } });
+	}
+
 	private static final FizzBuzz FIZZ_BUZZ = new FizzBuzz();
 
+	@Parameter
+	public int input;
+
+	@Parameter(1)
+	public String expected;
+
 	@Test
-    public void should_return_original_number_when_not_divisable_by_3_or_5() {
-        String result = FIZZ_BUZZ.run(1);
-        assertEquals("1", result);
-    }
-    
-    @Test
-    public void should_return_Fizz_when_number_divisable_by_3() {
-        String result = FIZZ_BUZZ.run(3);
-        assertEquals("Fizz", result);
-    }
-    
-    @Test
-    public void should_return_Buzz_when_number_divisable_by_5() {
-        String result = FIZZ_BUZZ.run(5);
-        assertEquals("Buzz", result);
-    }
-    
-    @Test
-    public void should_return_FizzBuzz_when_number_divisable_by_3_and_5() {
-        String result = FIZZ_BUZZ.run(15);
-        assertEquals("FizzBuzz", result);
-    }
+	public void run_test() {
+		String result = FIZZ_BUZZ.run(input);
+		assertEquals(expected, result);
+	}
 
 }
