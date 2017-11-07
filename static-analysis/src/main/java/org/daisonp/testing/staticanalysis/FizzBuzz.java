@@ -2,7 +2,7 @@ package org.daisonp.testing.staticanalysis;
 
 public class FizzBuzz {
 
-  public static String run(int value) {
+  public String run(int value) {
     StringBuilder sb = new StringBuilder();
     if (value % 3 == 0) {
       sb.append("Fizz");

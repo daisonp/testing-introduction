@@ -32,7 +32,7 @@ public class FizzBuzzTest {
 
   @Test
   public void run_test() {
-    assertEquals(expected,  FizzBuzz.run(input));
+    assertEquals(expected, new FizzBuzz().run(input));
   }
 
 }
